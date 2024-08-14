@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+sup {
+  @apply text-zinc-500 dark:text-zinc-400
+}
+
+p {
+  @apply indent-6 mt-0 mb-0
+}
+
+@font-face {
+  font-family: Padauk;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/PadaukBook-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Serif Myanmar";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/NotoSerifMyanmar-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Serif Myanmar";
+  font-style: bold;
+  font-weight: 800;
+  src: url("../font/NotoSerifMyanmar-ExtraBold.ttf") format("truetype");
+}
