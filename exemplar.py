@@ -37,7 +37,7 @@ def main():
                     match = re.match(r'\\v (\d+) (.*)', line)
                     if match:
                         verse_number, verse_text = int(match.group(1)), match.group(2)
-                        chapter_text += f" <sup>{verse_number}</sup> {verse_text}\n"
+                        chapter_text += f" <sup>{verse_number}</sup>&nbsp;{verse_text}\n"
 
                 elif line.startswith("\\p"):
                     chapter_text += "</p><p>"
@@ -97,7 +97,7 @@ def add_head(finished_chapters, current_chapter, title):
     <div class="md:col-span-3">
       {book_select}
     </div>
-    <div class="md:col-span-2 flex space-x-2">
+    <div class="md:col-span-2 flex space-x-6">
       {chapter_select}
       <button id="theme-toggle" type="button" class="text-zinc-500 transition duration-75 hover:bg-zinc-100 dark:hover:bg-zinc-700 dark:text-white rounded-full text-sm p-3">
         <svg id="theme-toggle-dark-icon" class="hidden size-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
