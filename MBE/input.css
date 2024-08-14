@@ -2,13 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
 sup {
   @apply text-zinc-500 dark:text-zinc-400
 }
 
 p {
-  @apply indent-6 mt-0 mb-0
+  @apply indent-6 mt-0 mb-0 leading-extra-loose
+}
+
+h1 {
+  @apply text-zinc-900 dark:text-white text-4xl md:text-5xl font-bold text-center leading-extra-loose mb-8 md:mb-10
 }
 
 @font-face {

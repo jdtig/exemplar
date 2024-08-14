@@ -64,8 +64,8 @@ def add_head(finished_chapters, current_chapter, title):
 
     current_book_name, _current_book_id, current_chapter_number, _current_chapter_text = current_chapter
 
-    book_select = '<select onchange="window.location = this.value;" class="px-4 py-3 text-base bg-zinc-50 border border-zinc-300 text-zinc-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">'
-    chapter_select = '<select onchange="window.location = this.value;" class="px-4 py-3 text-base bg-zinc-50 border border-zinc-300 text-zinc-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-end">'
+    book_select = '<select onchange="window.location = this.value;" class="px-4 py-3 text-base bg-zinc-50 border border-zinc-300 text-zinc-900 rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">'
+    chapter_select = '<select onchange="window.location = this.value;" class="px-4 py-3 text-base bg-zinc-50 border border-zinc-300 text-zinc-900 rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-end">'
     previous_book_name = ""
     for book_name, _book_id, chapter_number, _chapter_text in finished_chapters:
         if book_name != previous_book_name:
@@ -93,12 +93,16 @@ def add_head(finished_chapters, current_chapter, title):
 </head>
 <body>
   <main class="pt-8 pb-16 px-8 lg:pt-16 lg:pb-24 bg-white dark:bg-zinc-900 text-xl md:text-2xl text-zinc-700 dark:text-zinc-300">
-  <div class="grid gap-6 mb-8 lg:mb-16 md:grid-cols-4 max-w-xl mx-auto">
+  <div class="grid gap-6 mb-8 lg:mb-16 md:grid-cols-5 max-w-prose mx-auto">
     <div class="md:col-span-3">
       {book_select}
     </div>
-    <div>
+    <div class="md:col-span-2 flex space-x-2">
       {chapter_select}
+      <button id="theme-toggle" type="button" class="text-zinc-500 transition duration-75 hover:bg-zinc-100 dark:hover:bg-zinc-700 dark:text-white rounded-full text-sm p-3">
+        <svg id="theme-toggle-dark-icon" class="hidden size-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        <svg id="theme-toggle-light-icon" class="hidden size-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+      </button>
     </div>
   </div>
     <article class="mx-auto max-w-prose">
@@ -120,7 +124,7 @@ def add_foot(finished_chapters, current_chapter):
     if previous_chapter:
         book_name, _book_id, chapter_number, _chapter_text = previous_chapter
         previous_html = f'''
-        <a href="../../{book_name}/{chapter_number}/" class="text-white bg-zinc-700 hover:bg-zinc-800 rounded-full p-2.5 text-center inline-flex items-center dark:bg-zinc-600 dark:hover:bg-zinc-700">
+        <a href="../../{book_name}/{chapter_number}/" class="text-zinc-900 bg-zinc-50 hover:bg-zinc-100 border border-zinc-300 rounded-full p-2.5 text-center inline-flex items-center dark:text-white dark:bg-zinc-600 dark:bg-zinc-700 dark:border-zinc-600 dark:hover:bg-zinc-700">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
@@ -132,7 +136,7 @@ def add_foot(finished_chapters, current_chapter):
     if next_chapter:
         book_name, _book_id, chapter_number, _chapter_text = next_chapter
         next_html = f'''
-        <a href="../../{book_name}/{chapter_number}/" class="text-white bg-zinc-700 hover:bg-zinc-800 rounded-full p-2.5 text-center inline-flex items-center dark:bg-zinc-600 dark:hover:bg-zinc-700">
+        <a href="../../{book_name}/{chapter_number}/" class="text-zinc-900 bg-zinc-50 hover:bg-zinc-100 border border-zinc-300 rounded-full p-2.5 text-center inline-flex items-center dark:text-white dark:bg-zinc-600 dark:bg-zinc-700 dark:border-zinc-600 dark:hover:bg-zinc-700">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
@@ -153,6 +157,7 @@ def add_foot(finished_chapters, current_chapter):
       </div>
     </div>
   </main>
+  <script src="../../js/theme.js"></script>
 </body>
 </html>
 '''
